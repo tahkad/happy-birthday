@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ghita Baby</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <body>
+    <div class="stars"></div>
+    <div class="heart-container"></div>
+    <div class="balloons">
+        <div class="balloon balloon1"></div>
+        <div class="balloon balloon2"></div>
+        <div class="balloon balloon3"></div>
+        <div class="balloon balloon4"></div>
+        <div class="balloon balloon5"></div>
+    </div>
+
+    <div class="container">
+        <div class="birthday-card">
+            <div class="cake">🎂</div>
+            <h1>Happy Birthday Ghita!</h1>
+            <p class="message">
+                To the love of my life! <br>
+                Every day with you is a blessing! <br>
+                May all your dreams come true and this year bring you endless joy w l39ba l 100 3am.
+            </p>
+            <p class="message">
+                You make the world brighter just by being in it. 
+            </p>
+            <button class="btn" onclick="showSurprise()">Click here!</button>
+            
+            <div id="surprise" class="surprise-section">
+                <p class="message">
+                    KANBGHIK BZZAAAAAAAAAAAF! <br>
+                    ENJOY YOUR DAY WITH MY OPP!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Create floating hearts
+        function createHeart() {
+            const heartContainer = document.querySelector('.heart-container');
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heartContainer.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const colors = ['#ff69b4', '#ff1493', '#fff', '#ffd700', '#00ff00', '#00bfff'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 3000);
+                }, i * 100);
+            }
+        }
+
+        // Show surprise section
+        function showSurprise() {
+            const surprise = document.getElementById('surprise');
+            surprise.style.display = 'block';
+            setTimeout(() => {
+                surprise.style.opacity = '1';
+            }, 100);
+            createConfetti();
+        }
+        
+
+        // Initialize animations
+        createStars();
+        setInterval(createHeart, 1000);
+
+    </script>
+</body>
+</html>

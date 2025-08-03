@@ -1,0 +1,253 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="%23ff69b4" opacity="0.8"/></svg>'), auto;
+        }
+
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+            .birthday-card {
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(16px) saturate(180%);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(31,38,135,0.37);
+            border: 1px solid rgba(255,255,255,0.18);
+            padding: 40px 32px;
+            max-width: 400px;
+            margin: 40px auto;
+            text-align: center;
+ 
+        }
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff69b4; }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #ff69b4, 0 0 40px #ff69b4; }
+        }
+
+        .message {
+            color: #fff;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.5s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .cake {
+            font-size: 100px;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .balloons {
+            position: fixed;
+            bottom: -150px;
+            z-index: 0;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: rgba(0,0,0,0.2);
+            left: 50%;
+            bottom: -100px;
+            transform: translateX(-50%);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-600px) rotate(5deg); }
+            100% { transform: translateY(-1200px) rotate(-5deg); }
+        }
+
+        .balloon1 { background: #ff69b4; left: 10%; animation-delay: 0s; }
+        .balloon2 { background: #ff1493; left: 30%; animation-delay: 1s; }
+        .balloon3 { background: #ff69b4; left: 50%; animation-delay: 2s; }
+        .balloon4 { background: #ff1493; left: 70%; animation-delay: 3s; }
+        .balloon5 { background: #ff69b4; left: 90%; animation-delay: 4s; }
+
+        .heart-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff69b4;
+            transform: rotate(45deg);
+            animation: hearts 6s linear infinite;
+            opacity: 0;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff69b4;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            left: -10px;
+            top: 0;
+        }
+
+        .heart::after {
+            top: -10px;
+            left: 0;
+        }
+
+        @keyframes hearts {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(45deg) scale(0.5);
+            }
+            20% {
+                opacity: 0.8;
+                transform: translateY(-20px) rotate(45deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-1000px) rotate(45deg) scale(1);
+            }
+        }
+
+        .btn {
+            background: linear-gradient(90deg, #ff69b4 0%, #ffd700 100%);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 36px;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: scale(1.07);
+            box-shadow: 0 8px 24px rgba(255, 105, 180, 0.5);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .surprise-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    }
+    @media (max-width: 600px) {
+    .birthday-card {
+        padding: 20px 10px;
+        max-width: 95vw;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    .btn {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
